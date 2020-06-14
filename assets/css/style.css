@@ -37,7 +37,7 @@ ul {
 }
 
 img {
-  width: 100%;
+  width: 10%;
 }
 
 /* Utilities */
@@ -350,9 +350,14 @@ button {
   font: inherit;
 }
 
+/* table {
+  width: 100%;
+
+}*/
+
 table th,
 table td {
-  padding: 1rem;
+  padding: .5rem;
   text-align: left;
 }
 
@@ -360,6 +365,12 @@ table th {
   background: var(--light-color);
 
 }
+
+tr th {
+  padding: .5rem;
+}
+
+*/
 
 /* Navbar */
 .navbar {

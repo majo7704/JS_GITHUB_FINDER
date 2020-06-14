@@ -8,19 +8,18 @@
 
   <title>Github Finder</title>
 </head>
-
-<nav class="navbar bg-primary">
+<nav class="navbar bg-primary p-1">
   <h1>Github Finder
     <i class="fa fa-github" aria-hidden="true"></i>
   </h1>
 </nav>
-<header class="container">
-  <form class="form">
-    <input type="text" name="text" placeholder="eg. <repos data-user='devballteam' data-update='2019-05-01'>
+<header class="container searchContainer">
+  <form class="form-text" id="form">
+    <input id="userData" type="text" name="q" placeholder="eg. <repos data-user='devballteam' data-update='2019-05-01'>
       " />
     <input type="submit" value="Search" class="btn btn-dark btn-block" />
   </form>
-  <button class="btn btn-light btn-block">
+  <button id="clear" class="btn btn-light btn-block">
     <i class="fa fa-trash-o" aria-hidden="true"></i>
     Clear
   </button>
@@ -28,68 +27,22 @@
 
 <body>
   <div class="container">
-    <div class="card grid-2">
-      <div class="all-center">
-        <img src="image" width="150px" class="round-img" alt="avatar" />
-        <h1>{name}</h1>
-        <p>Location: {location}</p>
-      </div>
-      <div>
-        <a href="{html_url}" class="btn btn-dark my-1">
-          Visit Github Profile
-        </a>
-        <ul>
-          <li>
-            <strong data-user="username">Username: </strong>
-            {login}
-          </li>
-
-        </ul>
-      </div>
-    </div>
-    <div class="card all-center">
-      <table>
-        <thead>
-          <tr>
-            <th class="th repo_name">
-              Repository name
-            </th>
+    <table id="profile">
 
 
-            <th>
-              Description
-            </th>
-            <th data-update="updated_at">
-              Date of last update
-            </th>
-            <th>
-              Download
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>my name</td>
-            <td>my description</td>
-            <td>update</td>
-            <td><a class="btn btn-dark my-1" href="{repo.html_url}" target="_blank">
-                {repo.name}
-              </a></td>
-          </tr>
-          <tr>
-            <td>my name</td>
-            <td>my description</td>
-            <td>update</td>
-            <td><a class="btn btn-dark my-1" href="{repo.html_url}" target="_blank">
-                {repo.name}
-              </a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+
+    </table>
   </div>
 
+
+
+
+
+  <script src=" github.js">
+  </script>
+  <script src="ui.js"></script>
   <script src="script.js"></script>
+
   <script src="https://use.fontawesome.com/f2cf8fb4d6.js"></script>
 </body>
 
