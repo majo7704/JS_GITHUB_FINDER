@@ -2,42 +2,31 @@ class UI {
   constructor() {
     this.profile = document.getElementById('profile');
   }
-  showProfile(user, repos) {
+  showProfile(user) {
     this.profile.innerHTML += `
       <div class="card all-center">
         <h1>${user.name}</h1>
       </div>
-      <thead>
-      <tr>
-        <th>
-          Repo name:
-            </th>
-        <th>
-          Description:
-            </th>
-        <th data-update="updated_at">
-          Updated:
-            </th>
-        <th>
-          Repo link:
-            </th>
-      </tr>
-      </thead >
+    <table>
+    <thead >
+    <tr>
+      <th class="th repo_name">
+        Name:
+          </th>
+      <th>
+        Description:
+          </th>
+      <th data-update="updated_at">
+        Updated:
+          </th>
+      <th>
+        URL
+          </th>
+    </tr>
+    </thead >
+    
+    </table>
 `;
-    repos.forEach((repo) => {
-      this.profile.innerHTML += `
-      <tbody  >
-        <tr >
-          <td>${repo.name}</td>
-          <td>${repo.description}</td>
-          <td>${repo.updated_at}</td>
-          <td><a class="btn btn-dark my-1" href="${repo.html_url}" target="_blank">
-            Link
-          </a></td>
-        </tr>
-      </tbody>
-    `;
-    });
   }
 
   //Show alert
@@ -71,41 +60,9 @@ class UI {
   }
 
   //Show repos
-  // showRepos(repos) {
-  //   let output = `
-  // <table>
-  //   <thead >
-  //   <tr>
-  //     <th class="th repo_name">
-  //       Name:
-  //         </th>
-  //     <th>
-  //       Description:
-  //         </th>
-  //     <th data-update="updated_at">
-  //       Updated:
-  //         </th>
-  //     <th>
-  //       URL
-  //         </th>
-  //   </tr>
-  //   </thead >`;
-  //   repos.forEach(function (repo) {
-  //     output += `
-
-  //   <tbody>
-  //     <tr>
-  //       <td>${repo.name}</td>
-  //       <td>${repo.description}</td>
-  //       <td>${repo.updated_at}</td>
-  //       <td><a class="btn btn-dark my-1" href="${repo.html_url}" target="_blank">
-  //         Link
-  //       </a></td>
-  //     </tr>
-  //   </tbody>
-  //   </table>
-  //   `;
-  //   });
-  //   document.getElementById('repos').innerHTML = output;
-  // }
+  showRepos(repos) {
+    this.profile.innerHTML += `
+  
+    `;
+  }
 }
