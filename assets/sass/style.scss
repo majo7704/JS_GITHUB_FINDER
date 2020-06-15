@@ -13,6 +13,8 @@ $dark-color: #333333;
 $success-color: #28a745;
 $danger-color: #dc3545;
 
+// Media variable
+$media-tablet:'screen and(max-width: 700px)';
 
 // Global styles
 * {
@@ -46,6 +48,8 @@ img {
 .round-img {
   border-radius: 50%;
 }
+
+
 
 // Utilities
 .container {
@@ -118,7 +122,7 @@ img {
 
 // Cards
 .card {
-  padding: 1rem;
+  padding: 0.5rem;
   border: $secondary-color 1px dotted;
   margin: 0.7rem 0;
 }
@@ -187,6 +191,10 @@ img {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1rem;
+
+  @media #{$media-tablet} {
+    grid-template-columns: 1fr;
+  }
 }
 
 // Buttons
@@ -224,32 +232,6 @@ img {
   }
 }
 
-.btn-primary,
-.bg-primary,
-.badge-primary,
-.alert-primary {
-  background: $primary-color;
-  color: $light-color;
-}
-
-.btn-light,
-.bg-light,
-.badge-light,
-.alert-light {
-  background: $secondary-color;
-  color: $dark-color;
-  border: $secondary-color solid 1px;
-}
-
-.btn-dark,
-.bg-dark,
-.badge-dark,
-.alert-dark {
-  background: $dark-color;
-  color: $light-color;
-}
-
-
 .btn,
 .bg,
 .badge,
@@ -259,12 +241,6 @@ img {
     color: $light-color;
   }
 
-  &-white {
-    background: $light-color;
-    color: $dark-color;
-    border: $light-color solid 1px;
-  }
-
   &-danger {
     background: $danger-color;
     color: $light-color;
@@ -272,6 +248,18 @@ img {
 
   &-dark {
     background: $dark-color;
+    color: $light-color;
+    border: $dark-color solid 1px;
+  }
+
+  &-light {
+    background: $secondary-color;
+    color: $dark-color;
+    border: $secondary-color solid 1px;
+  }
+
+  &-primary {
+    background: $primary-color;
     color: $light-color;
   }
 }
@@ -283,31 +271,80 @@ img {
   display: block;
   margin-top: 0.3rem;
   color: $secondary-color;
+
+  &:hover {
+    border: none;
+  }
 }
 
 input {
   margin: 1.2rem 0;
 
   &[type='text'],
-  &[type='date'] {
+  &[type='date'],
+  &[type='submit'],
+  button {
     display: block;
     width: 100%;
     padding: 0.4rem;
     font-size: 1.2rem;
     border: 1px solid $light-color;
   }
-
-  &[type='submit'],
-  button {
-    font: inherit;
-  }
 }
 
 // Table
-
-table {
+table,
+tr {
   th {
     text-align: left;
     background: $secondary-color;
+    padding: 0.5rem
+  }
+
+  td {
+    text-align: left;
+    padding: 0.5rem;
+  }
+
+  @media #{$media-tablet} {
+    font-size: 77%;
+    overflow: hidden;
+  }
+}
+
+// Navbar
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 2rem;
+  z-index: 1;
+  width: 100%;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+
+  @media #{$media-tablet} {
+    display: block;
+    text-align: center;
+
+  }
+
+  ul {
+    display: flex;
+
+    @media #{$media-tablet} {
+      text-align: center;
+      justify-content: center;
+    }
+  }
+
+  a {
+    color: #fff;
+    padding: 0.45rem;
+    margin: 0 0.25rem;
+
+    &:hover {
+      color: $light-color;
+    }
   }
 }
