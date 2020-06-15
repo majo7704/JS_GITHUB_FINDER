@@ -8,33 +8,37 @@ const form = document.getElementById('form');
 const userData = document.getElementById('userData');
 const clearBtn = document.getElementById('clear');
 
-// window.onload = getQueryVariable = () => {
-//   let url_string = window.location.href.toLowerCase();
-//   let url = new URL(url_string);
-//   let name = url.searchParams.get('q').search('data-user');
-
-//   console.log(name);
-// };
 //Search input event listener
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const userValue = userData.value;
+  const userValue = userData.value.split('<repos ');
+  let specialChars = "!@#$^%*()+[]/{}|:'<>?,.";
 
-  const queryStr = userValue;
-  const usp = new URLSearchParams(queryStr);
-
-  const userName = usp.get('data-user');
-  const updateAt = usp.get('data-update');
-  console.log(`${userName} ${updateAt}`);
-
-  for (const [key, value] of usp) {
-    console.log(`${key}=${value}`);
+  let myUrl = userValue[1];
+  //let nextUrl = myUrl.split('&');
+  // console.log(nextUrl);
+  for (let i = 0; i < specialChars.length; i++) {
+    myUrl = myUrl.replace(new RegExp('\\' + specialChars[i], 'gi'), '');
   }
-  console.log(usp.toString());
+  const usp = new URLSearchParams(myUrl);
 
-  // const paramValue = getQueryVariable('data-user');
+  const userName = usp.get('data-user', 'data-update');
+  console.log(userName);
+  const repoUpdate = usp.get('data-update');
+  console.log(repoUpdate);
+
+  // // Display the key/value pairs
+  // for (let pair of usp.entries()) {
+  //   console.log(pair[0] + ', ' + pair[1]);
+  // }
+
+  // for (const [key, value] of usp) {
+  //   console.log(`${key}=${value}`);
+  // }
+  // console.log(usp.toString());
+
   if (userValue !== '') {
-    github.getUser(`${userName}`).then((data) => {
+    github.getUser(`${userName}`, `${repoUpdate}`).then((data) => {
       if (data.profile.message === 'Not Found') {
         //show alert
         ui.showAlert('User not found', 'btn-light');
@@ -47,16 +51,6 @@ form.addEventListener('submit', (e) => {
     ui.clearProfile();
   }
 });
-// form.addEventListener('submit', (e) => {
-//   let userValue = userData.value;
-//   if (userValue !== '') {
-//     let user_data = userValue.find('data-user'.value);
-//     let update_data = userValue.find('data-update'.value);
-//     github.getRepos(user_data, update_data).then((data) => {
-//       ui.showRepos(data.repos);
-//     });
-//   }
-// });
 
 clearBtn.addEventListener('click', () => {
   document.getElementById('profile').innerHTML = '';

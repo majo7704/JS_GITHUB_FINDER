@@ -4,13 +4,9 @@ class UI {
   }
   showProfile(user, repos) {
     this.profile.innerHTML += `
-      
       <div class="card all-center">
-        
         <h1>${user.name}</h1>
-        
       </div>
-      
       <thead>
       <tr>
         <th class="th repo_name">
@@ -27,12 +23,9 @@ class UI {
             </th>
       </tr>
       </thead >
-      
-      
 `;
     repos.forEach((repo) => {
       this.profile.innerHTML += `
-      
       <tbody  >
         <tr >
           <td>${repo.name}</td>
@@ -43,8 +36,6 @@ class UI {
           </a></td>
         </tr>
       </tbody>
-      
-      
     `;
     });
   }
