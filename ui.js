@@ -9,16 +9,16 @@ class UI {
       </div>
       <thead>
       <tr>
-        <th class="th repo_name">
+        <th class="p">
           Name:
             </th>
-        <th>
+        <th class="p">
           Description:
             </th>
-        <th data-update="updated_at">
+        <th class="p" data-update="updated_at">
           Updated:
             </th>
-        <th>
+        <th class="p">
           Link to repo
             </th>
       </tr>
