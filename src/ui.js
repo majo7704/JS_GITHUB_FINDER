@@ -13,7 +13,11 @@ class UI {
   showProfile(user) {
     this.profile.innerHTML += `
       <div class="card all-center">
-        <h1>${user.name}</h1>
+        ${
+          user.name !== null
+            ? `<h1>${user.name}</h1>`
+            : `<h1>${user.login}</h1>`
+        }
       </div>
     <table>
     <thead >
