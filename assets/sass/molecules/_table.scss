@@ -2,14 +2,14 @@
 table,
 tr {
   th {
-    text-align: left;
+    @include p;
+    @include text-left;
     background: $secondary-color;
-    padding: 0.5rem
   }
 
   td {
-    text-align: left;
-    padding: 0.5rem;
+    @include p;
+    @include text-left;
   }
 
   @media #{$media-tablet} {

@@ -1,6 +1,6 @@
 // Cards
 .card {
-  padding: 0.5rem;
+  @include p;
   border: $secondary-color 1px dotted;
   margin: 0.7rem 0;
 }

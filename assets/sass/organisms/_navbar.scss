@@ -11,7 +11,7 @@
 
   @media #{$media-tablet} {
     display: block;
-    text-align: center;
+    @include text-center;
 
   }
 
@@ -19,13 +19,13 @@
     display: flex;
 
     @media #{$media-tablet} {
-      text-align: center;
+      @include text-center;
       justify-content: center;
     }
   }
 
   a {
-    color: #fff;
+    color: $light-color;
     padding: 0.45rem;
     margin: 0 0.25rem;
 
@@ -37,7 +37,7 @@
 
 // List
 .list {
-  margin: 0.5rem 0;
+  @include my;
 
   li {
     padding-bottom: 0.3rem;
