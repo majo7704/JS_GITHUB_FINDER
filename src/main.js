@@ -1,9 +1,13 @@
-/** Initialize Github, new instance
- *
+// @ts-nocheck
+
+/**
+ * Initialize Github, new instance
+ * See {@link Github}
  */
 const github = new Github();
-/** Initialize UI, new instance
- *
+/**
+ * Initialize UI, new instance
+ * See {@link UI}
  */
 const ui = new UI();
 
@@ -29,6 +33,7 @@ form.addEventListener('submit', (e) => {
   }
   // @ts-ignore
   const userValue = userData.value.toLowerCase().split('<repos ');
+
   let specialChars = '!@#$^%*()+[]{}|:"<>?,.';
 
   let myUrl = userValue[1];

@@ -1,5 +1,5 @@
 /**
- * UI class
+ * Class to create new instance of UI
  * @class
  */
 class UI {
@@ -7,7 +7,7 @@ class UI {
     this.profile = document.getElementById('profile');
   }
   /**
-   * Show Profile method renders user name plus header of the table
+   * @property {Function} - method that renders user name plus header of the table
    * @param {Object} user - User fetched from github api
    */
   showProfile(user) {
