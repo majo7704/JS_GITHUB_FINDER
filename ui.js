@@ -10,7 +10,7 @@ class UI {
     <table>
     <thead >
     <tr>
-      <th class="th repo_name">
+      <th >
         Name:
           </th>
       <th>

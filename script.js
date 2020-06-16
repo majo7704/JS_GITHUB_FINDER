@@ -11,11 +11,12 @@ const clearBtn = document.getElementById('clear');
 //Search input event listener
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  if (userData.value === '') {
-    ui.showAlert('Please enter data', 'alert-danger');
+  if (userData.value === '' || userData.value.indexOf('<repos ') == -1) {
+    ui.showAlert('Please enter data', 'alert--danger');
+    userData.value = '';
     return;
   }
-  const userValue = userData.value.split('<repos ');
+  const userValue = userData.value.toLowerCase().split('<repos ');
   let specialChars = '!@#$^%*()+[]{}|:"<>?,.';
 
   let myUrl = userValue[1];
@@ -33,6 +34,7 @@ form.addEventListener('submit', (e) => {
   console.log(repoUpdate);
 
   if (userValue !== '') {
+    // Make an HTTP call to Github API
     github.getUser(`${userName}`, `${repoUpdate}`).then((data) => {
       const dateEntered = `${repoUpdate}`;
 
@@ -41,15 +43,16 @@ form.addEventListener('submit', (e) => {
       // });
       if (data.profile.message === 'Not Found') {
         //show alert
-        ui.showAlert('User not found', 'alert-danger');
+        ui.showAlert('User not found', 'alert--danger');
       } else {
         //Show profile
         ui.showProfile(data.profile);
+
         const filtered = data.repos.filter((filteredDates, el) => {
           if (
             Date.parse(
               new Date(filteredDates.updated_at).toLocaleDateString()
-            ) >= Date.parse(dateEntered)
+            ) >= Date.parse(new Date(dateEntered))
           ) {
             return (document.getElementById('profile').innerHTML += `
       <tbody  >
@@ -59,7 +62,7 @@ form.addEventListener('submit', (e) => {
           <td>${new Date(filteredDates.updated_at).toLocaleDateString(
             'en-GB'
           )}</td>
-          <td><a class="btn btn-dark my-1" href="${
+          <td><a class="btn btn--dark my-1" href="${
             filteredDates.html_url
           }" target="_blank">
             Link
@@ -75,6 +78,7 @@ form.addEventListener('submit', (e) => {
       }
     });
   } else {
+    ui.showAlert('Please enter data correctly', 'alert--danger');
     ui.clearProfile();
   }
 });

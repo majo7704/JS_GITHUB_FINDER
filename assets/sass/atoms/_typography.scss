@@ -1,0 +1,113 @@
+// Google fonts
+@import url('http://fonts.googleapis.com/css?family=Roboto+Slab|Open+Sans:400italic,700italic,400,700');
+
+// Font Variables and silent selector
+$font-stack: 'Roboto',
+'Open Sans',
+sans-serif;
+
+%main-font {
+  font-family: $font-stack;
+  font-weight: 400;
+}
+
+// Text Styles
+.x-large {
+  font-size: 4rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.large {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.text {
+  &-center {
+    text-align: center;
+  }
+
+  &-primary {
+    color: $primary-color;
+  }
+
+  &-dark {
+    color: $dark-color;
+  }
+
+  &-right {
+    text-align: right;
+  }
+
+  &-left {
+    text-align: right;
+  }
+}
+
+// Padding
+.p {
+  padding: 0.5rem;
+
+  &-1 {
+    padding: 1rem;
+  }
+
+  &-2 {
+    padding: 2rem;
+  }
+}
+
+.py {
+  padding: 0.5rem 0;
+
+  &-1 {
+    padding: 1rem 0;
+  }
+
+  &-2 {
+    padding: 2rem 0;
+  }
+}
+
+// Margin
+.m {
+  margin: 0.5rem;
+
+  &-1 {
+    margin: 1rem;
+  }
+
+  &-2 {
+    margin: 2rem;
+  }
+}
+
+.my {
+  margin: 0.5rem 0;
+
+  &-1 {
+    margin: 1rem 0;
+  }
+
+  &-2 {
+    margin: 2rem 0;
+  }
+}
+
+// Grid
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+
+  @media #{$media-tablet} {
+    grid-template-columns: 1fr;
+  }
+}

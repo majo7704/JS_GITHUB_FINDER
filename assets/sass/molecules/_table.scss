@@ -1,0 +1,19 @@
+// Table
+table,
+tr {
+  th {
+    text-align: left;
+    background: $secondary-color;
+    padding: 0.5rem
+  }
+
+  td {
+    text-align: left;
+    padding: 0.5rem;
+  }
+
+  @media #{$media-tablet} {
+    font-size: 77%;
+    overflow: hidden;
+  }
+}
