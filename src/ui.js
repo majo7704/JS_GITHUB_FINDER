@@ -1,7 +1,15 @@
+/**
+ * UI class
+ * @class
+ */
 class UI {
   constructor() {
     this.profile = document.getElementById('profile');
   }
+  /**
+   * Show Profile method renders user name plus header of the table
+   * @param {Object} user - User fetched from github api
+   */
   showProfile(user) {
     this.profile.innerHTML += `
       <div class="card all-center">
@@ -24,12 +32,14 @@ class UI {
           </th>
     </tr>
     </thead >
-    
     </table>
 `;
   }
-
-  //Show alert
+  /**
+   *Show alert method renders dynamically an alert box with a message based on the className parameter
+   * @param {string} message
+   * @param {string} className
+   */
   showAlert(message, className) {
     //Clear remaining alerts
     this.clearAlert();
@@ -42,24 +52,33 @@ class UI {
     const container = document.querySelector('.searchContainer');
     const search = document.querySelector('.form-text');
     container.insertBefore(div, search);
+    /**
+     * JavaScript method which executes function of removing an alert after 3s
+     */
     //Timeout after 3000
     setTimeout(() => {
       document.querySelector('.alert').remove();
     }, 3000);
   }
-  //Clear alet
+  /**
+   * Clear alert method
+   */
   clearAlert() {
     const currentAlert = document.querySelector('.alert');
     if (currentAlert) {
       currentAlert.remove();
     }
   }
-  //Clear Profile
+  /**
+   * Clear profile method
+   */
   clearProfile() {
     this.profile.innerHTML = '';
   }
-
-  //Show repos
+  /**
+   *Show repos method renders user repos fetched from github api based on the entered data
+   * @param {Object} repos
+   */
   showRepos(repos) {
     this.profile.innerHTML += `
   
