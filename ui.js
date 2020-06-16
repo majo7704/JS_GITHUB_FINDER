@@ -43,7 +43,7 @@ class UI {
     const search = document.querySelector('.form-text');
     container.insertBefore(div, search);
     //Timeout after 3000
-    setTimeout(function () {
+    setTimeout(() => {
       document.querySelector('.alert').remove();
     }, 3000);
   }

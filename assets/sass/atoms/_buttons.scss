@@ -35,8 +35,8 @@
 }
 
 .alert {
-  @include my-1;
-  padding: 0.7rem;
+  margin: 0;
+  padding: 0.3rem;
   opacity: 0.9;
   background: $light-color;
   color: $dark-color;

@@ -29,75 +29,61 @@ sans-serif;
   margin-bottom: 1rem;
 }
 
-@mixin text {
-  &-center {
-    text-align: center;
-  }
+// Text classes
+$textstyles:(center, right, left);
 
-  &-primary {
+@each $style in $textstyles {
+  .text--#{$style} {
+    text-align: #{$style};
+  }
+}
+
+.text {
+  &--primary {
     color: $primary-color;
   }
 
-  &-dark {
+  &--dark {
     color: $dark-color;
   }
-
-  &-right {
-    text-align: right;
-  }
-
-  &-left {
-    text-align: right;
-  }
 }
 
-// Padding
+// Padding & margin mixins
 @mixin p {
   padding: 0.5rem;
-
-  &-1 {
-    padding: 1rem;
-  }
-
-  &-2 {
-    padding: 2rem;
-  }
 }
 
-.py {
+@mixin py {
   padding: 0.5rem 0;
-
-  &-1 {
-    padding: 1rem 0;
-  }
-
-  &-2 {
-    padding: 2rem 0;
-  }
 }
 
-// Margin
-.m {
+@mixin m {
   margin: 0.5rem;
-
-  &-1 {
-    margin: 1rem;
-  }
-
-  &-2 {
-    margin: 2rem;
-  }
 }
 
 @mixin my {
   margin: 0.5rem 0;
 
-  &-1 {
-    margin: 1rem 0;
+}
+
+// Margin classes
+$spaceamounts:(1, 2);
+
+@each $space in $spaceamounts {
+  .m-#{$space} {
+    margin: #{$space}rem;
   }
 
-  &-2 {
-    margin: 2rem 0;
+  .my-#{$space} {
+    margin: #{$space}rem 0;
+  }
+
+  .p-#{$space} {
+    padding: #{$space}rem;
+  }
+
+  .py-#{$space} {
+    padding: #{$space}rem 0;
   }
 }
 

@@ -20,9 +20,7 @@ form.addEventListener('submit', (e) => {
   let specialChars = '!@#$^%*()+[]{}|:"<>?,.';
 
   let myUrl = userValue[1];
-  console.log(myUrl);
-  //let nextUrl = myUrl.split('&');
-  // console.log(nextUrl);
+
   for (let i = 0; i < specialChars.length; i++) {
     myUrl = myUrl.replace(new RegExp('\\' + specialChars[i], 'gi'), '');
   }
@@ -38,9 +36,6 @@ form.addEventListener('submit', (e) => {
     github.getUser(`${userName}`, `${repoUpdate}`).then((data) => {
       const dateEntered = `${repoUpdate}`;
 
-      // const dateArray = data.repos.map(function (el) {
-      //   return new Date(el.updated_at).toLocaleDateString();
-      // });
       if (data.profile.message === 'Not Found') {
         //show alert
         ui.showAlert('User not found', 'alert--danger');
@@ -48,7 +43,7 @@ form.addEventListener('submit', (e) => {
         //Show profile
         ui.showProfile(data.profile);
 
-        const filtered = data.repos.filter((filteredDates, el) => {
+        const filtered = data.repos.filter((filteredDates) => {
           if (
             Date.parse(
               new Date(filteredDates.updated_at).toLocaleDateString()

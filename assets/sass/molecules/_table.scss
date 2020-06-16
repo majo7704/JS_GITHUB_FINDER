@@ -3,13 +3,13 @@ table,
 tr {
   th {
     @include p;
-    @include text-left;
+    text-align: left;
     background: $secondary-color;
   }
 
   td {
     @include p;
-    @include text-left;
+    text-align: left;
   }
 
   @media #{$media-tablet} {
