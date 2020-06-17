@@ -42,7 +42,7 @@ form.addEventListener('submit', (e) => {
     myUrl = myUrl.replace(new RegExp('\\' + specialChars[i], 'gi'), '');
   }
   /**
-   * Usp is the URLSearchParams new object
+   * Usp is the URLSearchParams new object(enterde code is treated as params to pull out needed values)
    */
   const usp = new URLSearchParams(myUrl.replace(' ', '&'));
   /**
@@ -50,15 +50,16 @@ form.addEventListener('submit', (e) => {
    * @type {string}
    */
   const userName = usp.get('data-user');
+
   /**
-   * Repo update
+   * Repo update value
    * @type {string}
    */
   const repoUpdate = usp.get('data-update');
 
   if (userValue !== '') {
     /**
-     * After instanstiating new instance of github - getting user data based on the user name and updated repos
+     * After instanstiating the new instance of github - getting user data based on values of user name and updated repos
      */
     github.getUser(`${userName}`, `${repoUpdate}`).then((data) => {
       const dateEntered = `${repoUpdate}`;
@@ -81,7 +82,7 @@ form.addEventListener('submit', (e) => {
         const filtered = data.repos.filter((filteredDates) => {
           if (
             Date.parse(
-              new Date(filteredDates.updated_at).toLocaleDateString()
+              new Date(filteredDates.updated_at).toLocaleDateString('en-US')
             ) >= Date.parse(dateEntered)
           ) {
             return (document.getElementById('profile').innerHTML += `
@@ -103,7 +104,7 @@ form.addEventListener('submit', (e) => {
           }
         });
         /**
-         * Showing only filtered repos of a user based on the data-user and data-update values
+         * Rendering only filtered repos of a user based on the data-user and data-update values
          */
         ui.showRepos(filtered);
         // @ts-ignore
