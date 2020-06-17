@@ -90,14 +90,16 @@ form.addEventListener('submit', (e) => {
          */
         const filtered = data.repos.filter((filteredDates) => {
           const { name, description, updated_at, html_url } = filteredDates;
-          //const formatFilteredDates = dateFns.format(
-          //filteredDates.updated_at,
-          //'YYYY-MM-DD'
-          //);
           /**
-           * Formating dates and parsing them to miliseconds which allows to compare the dates; The commented part uses build-in function of date-fns library to check if the repos were updated after the date-update attribute; Both options are presenting correct data
+           * Formating dates and parsing them to miliseconds which allows to
+           * compare the dates; The code below uses build-in function of
+           * date-fns library to format date and to check if the repos were
+           * updated after the date-update attribute
+           * const formatFilteredDates = dateFns.format(
+           * filteredDates.updated_at,'YYYY-MM-DD')
+           * if (dateFns.isAfter(formatFilteredDates, dateEntered)) {}
            */
-          // if (dateFns.isAfter(formatFilteredDates, dateEntered)) {
+
           if (
             Date.parse(
               new Date(filteredDates.updated_at).toLocaleDateString('en-US')
