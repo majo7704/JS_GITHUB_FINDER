@@ -11,13 +11,10 @@ class UI {
    * @param {Object} user - User fetched from github api
    */
   showProfile(user) {
+    const { name, login } = user;
     this.profile.innerHTML += `
       <div class="card all-center">
-        ${
-          user.name !== null
-            ? `<h1>${user.name}</h1>`
-            : `<h1>${user.login}</h1>`
-        }
+        ${user.name !== null ? `<h1>${name}</h1>` : `<h1>${login}</h1>`}
       </div>
     <table>
     <thead >

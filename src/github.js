@@ -1,5 +1,5 @@
 /**
- * Class to create new instance of Github
+ * Class to create new instance of Github object
  */
 class Github {
   constructor() {
