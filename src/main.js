@@ -107,25 +107,29 @@ form.addEventListener('submit', (e) => {
     github.getUser(`${userName}`, `${repoUpdate}`).then((data) => {
       const dateEntered = `${repoUpdate}`;
 
-      /**
-       * Checking for validity of a date in date-update attribute and existance of a user
-       */
       if (data.profile.message === 'Not Found') {
         /**
          * Showing alert with a message if no user was found
          */
-
         ui.showAlert('User not found', 'alert--danger');
         userData.value = '';
-      } else if (!isValidDate(dateEntered)) {
-        ui.showAlert('Please enter correct date yyyy-mm-dd ', 'alert--danger');
-        return;
       } else {
         /** Rendering profile data by using method of UI class
          * See {@link UI}
          * @type {Object}
          */
         ui.showProfile(data.profile);
+
+        /**
+         * Checking for validity of a date in date-update attribute
+         */
+        if (!isValidDate(dateEntered)) {
+          ui.showAlert(
+            'Please enter correct date yyyy-mm-dd ',
+            'alert--danger'
+          );
+          return;
+        }
 
         /**
          * Filtering throught fetched repos of the user
