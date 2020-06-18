@@ -1,5 +1,4 @@
 // @ts-nocheck
-
 /**
  * Initialize Github, new instance
  * See {@link Github}
@@ -18,6 +17,44 @@ const ui = new UI();
 const form = document.getElementById('form');
 const userData = document.getElementById('userData');
 const clearBtn = document.getElementById('clear');
+
+/**
+ * Function isValidDate that verifies the validity of date entered by user in date-attribute; Used during the form submition
+ */
+function isValidDate(dateString) {
+  /**
+   * First check for the pattern
+   */
+  let regex_date = /^\d{4}\-\d{1,2}\-\d{1,2}$/;
+
+  if (!regex_date.test(dateString)) {
+    return false;
+  }
+  /**
+   * Parse the date parts to integers
+   */
+  let parts = dateString.split('-');
+  let day = parseInt(parts[2], 10);
+  let month = parseInt(parts[1], 10);
+  let year = parseInt(parts[0], 10);
+  /**
+   * Check the ranges of month and year
+   */
+  if (year < 1000 || year > 3000 || month == 0 || month > 12) {
+    return false;
+  }
+  let monthLength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  /**
+   * Adjust for leap years
+   */
+  if (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0)) {
+    monthLength[1] = 29;
+  }
+  /**
+   * Check the range of the day
+   */
+  return day > 0 && day <= monthLength[month - 1];
+}
 
 /**
  * Search input event listener which will fetch profile and repos data from the API and output them to the DOM.
@@ -39,7 +76,6 @@ form.addEventListener('submit', (e) => {
    */
   // @ts-ignore
   const userValue = userData.value.toLowerCase().split('<repos ');
-
   /**
    * Substring with index 1 has been clean up by replacing all special characters with nothing.
    */
@@ -57,7 +93,6 @@ form.addEventListener('submit', (e) => {
    * @type {string}
    */
   const userName = usp.get('data-user');
-
   /**
    * Repo update value
    * @type {string}
@@ -72,11 +107,19 @@ form.addEventListener('submit', (e) => {
     github.getUser(`${userName}`, `${repoUpdate}`).then((data) => {
       const dateEntered = `${repoUpdate}`;
 
+      /**
+       * Checking for validity of a date in date-update attribute and existance of a user
+       */
       if (data.profile.message === 'Not Found') {
         /**
          * Showing alert with a message if no user was found
          */
+
         ui.showAlert('User not found', 'alert--danger');
+        userData.value = '';
+      } else if (!isValidDate(dateEntered)) {
+        ui.showAlert('Please enter correct date yyyy-mm-dd ', 'alert--danger');
+        return;
       } else {
         /** Rendering profile data by using method of UI class
          * See {@link UI}
@@ -94,7 +137,7 @@ form.addEventListener('submit', (e) => {
            * Formating dates and parsing them to miliseconds which allows to
            * compare the dates; The code below uses build-in function of
            * date-fns library to format date and to check if the repos were
-           * updated after the date-update attribute
+           * updated after the date-update attribute-
            * const formatFilteredDates = dateFns.format(
            * filteredDates.updated_at,'YYYY-MM-DD')
            * if (dateFns.isAfter(formatFilteredDates, dateEntered)) {}
@@ -133,7 +176,9 @@ form.addEventListener('submit', (e) => {
     ui.clearProfile();
   }
 });
-
+/**
+ * Event listener that cleares the fetched profiles and repos
+ */
 clearBtn.addEventListener('click', () => {
   document.getElementById('profile').innerHTML = '';
   // @ts-ignore

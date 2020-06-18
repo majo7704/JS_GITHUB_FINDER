@@ -18,6 +18,9 @@ class Github {
    * @param {string} update - Repos updated_at data
    */
   async getUser(user, update) {
+    /**
+     * Await response of the fetch call
+     */
     const profileResponse = await fetch(
       `https://api.github.com/users/${user}?client_id=${this.client_id}&client_secret=${this.client_secret}`
     );
