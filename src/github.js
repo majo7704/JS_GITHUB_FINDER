@@ -1,15 +1,17 @@
+const client_id = 'd6d22a8ff294d2301bbc';
+const client_secret = '0d509f4d64917e755adb5b9a8dba5fee97799ac2';
 /**
  * Class to create new instance of Github object
  */
 class Github {
-  constructor() {
+  constructor(client_id, client_secret) {
     /**
      * @property {number} client.id
      * @property {number} client_secret
      * @property {date} repos_sort
      */
-    this.client_id = 'd6d22a8ff294d2301bbc';
-    this.client_secret = '0d509f4d64917e755adb5b9a8dba5fee97799ac2';
+    this.client_id = client_id;
+    this.client_secret = client_secret;
     this.repos_sort = new Date('updated_at');
   }
   /**

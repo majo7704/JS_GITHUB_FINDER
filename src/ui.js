@@ -56,7 +56,6 @@ class UI {
     /**
      * JavaScript method which executes function of removing an alert after 3s
      */
-    //Timeout after 3000
     setTimeout(() => {
       document.querySelector('.alert').remove();
     }, 3000);

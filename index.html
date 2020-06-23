@@ -8,21 +8,23 @@
   <link rel="moment" href="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment-with-locales.min.js">
   <title>Github Finder</title>
 </head>
-<nav class="navbar bg--primary p-1">
-  <h1>Github Finder
-    <i class="fa fa-github" aria-hidden="true"></i>
-  </h1>
-</nav>
-<header class="container searchContainer ">
-  <form class="form-text" id="form">
-    <input id="userData" type="text" name="q" placeholder="eg. <repos data-user='devballteam' data-update='2019-05-01'> 
+<header>
+  <nav class="navbar bg--primary p-1">
+    <h1>Github Finder
+      <i class="fa fa-github" aria-hidden="true"></i>
+    </h1>
+  </nav>
+  <div class="container searchContainer ">
+    <form class="form-text" id="form">
+      <input id="userData" type="text" name="q" placeholder="eg. <repos data-user='devballteam' data-update='2019-05-01'> 
       " />
-    <input type="submit" value="Search" class="btn btn--light btn--block" />
-  </form>
-  <button id="clear" class="btn btn--dark btn--block">
-    <i class="fa fa-trash-o" aria-hidden="true"></i>
-    Clear
-  </button>
+      <input type="submit" value="Search" class="btn btn--light btn--block" />
+    </form>
+    <button id="clear" class="btn btn--dark btn--block">
+      <i class="fa fa-trash-o" aria-hidden="true"></i>
+      Clear
+    </button>
+  </div>
 </header>
 
 <body>
