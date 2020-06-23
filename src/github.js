@@ -18,29 +18,33 @@ class Github {
    * @param {string} update - Repos updated_at data
    */
   async getUser(user, update) {
-    /**
-     * Await response of the fetch call
-     */
-    const profileResponse = await fetch(
-      `https://api.github.com/users/${user}?client_id=${this.client_id}&client_secret=${this.client_secret}`
-    );
-    const reposResponse = await fetch(
-      `https://api.github.com/users/${user}/repos?sort=${this.repos_sort}&client_id=${this.client_id}&client_secret=${this.client_secret}`
-    );
-    /**
-     * Profile
-     * @type {Object}
-     */
-    const profile = await profileResponse.json();
-    /**
-     * Repos
-     * @type {Object}
-     */
-    const repos = await reposResponse.json();
+    try {
+      /**
+       * Await response of the fetch call
+       */
+      const profileResponse = await fetch(
+        `https://api.github.com/users/${user}?client_id=${this.client_id}&client_secret=${this.client_secret}`
+      );
+      const reposResponse = await fetch(
+        `https://api.github.com/users/${user}/repos?sort=${this.repos_sort}&client_id=${this.client_id}&client_secret=${this.client_secret}`
+      );
+      /**
+       * Profile
+       * @type {Object}
+       */
+      const profile = await profileResponse.json();
+      /**
+       * Repos
+       * @type {Object}
+       */
+      const repos = await reposResponse.json();
 
-    return {
-      profile,
-      repos,
-    };
+      return {
+        profile,
+        repos,
+      };
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

@@ -37,7 +37,7 @@ class UI {
 `;
   }
   /**
-   *Show alert method renders dynamically an alert box with a message based on the className parameter
+   *Show alert method renders dynamically an alert box with a message based on the class parameter
    * @param {string} message
    * @param {string} className
    */

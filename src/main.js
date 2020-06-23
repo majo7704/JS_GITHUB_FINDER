@@ -62,7 +62,7 @@ function isValidDate(dateString) {
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   /**
-   * Checking if the search value is not empty and if the string <repos exists, otherwise show alert
+   * Check if the search value is not empty and if the string <repos exists, otherwise show alert
    */
   // @ts-ignore
   if (!userData.value.trim() || userData.value.indexOf('<repos ') == -1) {
@@ -72,7 +72,7 @@ form.addEventListener('submit', (e) => {
     return;
   }
   /**
-   * Spliting a string into an array of substrings and returning new array userValue
+   * Split a string into an array of substrings and return new array userValue
    */
   // @ts-ignore
   const userValue = userData.value.toLowerCase().split('<repos ');
@@ -101,7 +101,7 @@ form.addEventListener('submit', (e) => {
 
   if (userValue !== '') {
     /**
-     * After instanstiating the new instance of github - getting user data based on values of user name and updated repos
+     * After instanstiating the new instance of github - get user data based on values of user name and updated repos
      * See {@link Github}
      */
     github.getUser(`${userName}`, `${repoUpdate}`).then((data) => {
@@ -109,19 +109,19 @@ form.addEventListener('submit', (e) => {
 
       if (data.profile.message === 'Not Found') {
         /**
-         * Showing alert with a message if no user was found
+         * Show alert with a message if no user was found
          */
         ui.showAlert('User not found', 'alert--danger');
         userData.value = '';
       } else {
-        /** Rendering profile data by using method of UI class
+        /** Render profile data by using method of UI class
          * See {@link UI}
          * @type {Object}
          */
         ui.showProfile(data.profile);
 
         /**
-         * Checking for validity of a date in date-update attribute
+         * Check for validity of a date in date-update attribute
          */
         if (!isValidDate(dateEntered)) {
           ui.showAlert(
@@ -132,13 +132,13 @@ form.addEventListener('submit', (e) => {
         }
 
         /**
-         * Filtering throught fetched repos of the user
-         * @returns {Object} - Rendering only fetched repos from github api which are older than the date-update
+         * Filter throught fetched repos of the user
+         * @returns {Object} - Render only fetched repos from github api which are older than the date-update
          */
         const filtered = data.repos.filter((filteredDates) => {
           const { name, description, updated_at, html_url } = filteredDates;
           /**
-           * Formating dates and parsing them to miliseconds which allows to
+           * Format dates and parsing them to miliseconds which allows to
            * compare the dates; The code below uses build-in function of
            * date-fns library to format date and to check if the repos were
            * updated after the date-update attribute-
@@ -167,7 +167,7 @@ form.addEventListener('submit', (e) => {
           }
         });
         /**
-         * Rendering only filtered repos of a user based on the data-user and data-update values
+         * Render only filtered repos of a user based on the data-user and data-update values
          * See {@link UI}
          */
         ui.showRepos(filtered);

@@ -4,7 +4,9 @@
   "description": "",
   "main": "github.js",
   "scripts": {
-    "doc": "jsdoc -c jsdoc.json"
+    "doc": "jsdoc -c jsdoc.json",
+    "build-css": "node-sass --assets scss assets/sass/style.scss   assets/css/style.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,8 @@
   },
   "homepage": "https://github.com/majo7704/JS_GITHUB_FINDER#readme",
   "devDependencies": {
-    "jsdoc": "^3.6.4"
+    "jsdoc": "^3.6.4",
+    "node-sass": "^4.14.1",
+    "nodemon": "^2.0.4"
   }
 }
